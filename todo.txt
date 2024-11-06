@@ -12,3 +12,7 @@ mnijeszy odstep logo formularz
 mnijeszy padding top fomrularz
 pogoda po lewej w rogu maszynopisana czcionka
 TEACHER PŁATNY PRZY REJESTRACJI
+blokada scrollowania na stornie logowania
+wyusokosc strony na window high
+prompt przed odswiezeniem, zamknieceim
+blokada cofniecia strony przegladarki
