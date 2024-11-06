@@ -1,0 +1,14 @@
+z app.js porobic komponenty login signup i google button
+brak przerwy miedzy pojawianiem sie i znikaniem 
+Dodanie useContext lub Redux do zarządzania stanem użytkownika, np. po udanym logowaniu, pozwoli w prosty sposób przekazać informacje o użytkowniku do różnych części aplikacji.
+klikam zaloguj sie potem zarejestruj sie i jako telefon pokazuje zaloguj sie
+credentialResponse do serwera z google opauth zeby logowac/signup
+dane do backendu (np. Express) za pomocą fetch lub axios do sprawdzenia, czy użytkownik istnieje(roznica miedzy php czy o co chodzi)
+mnijesze litery lub zarejestruj sue
+value={email} onChange={(e) => setEmail(e.target.value)} // do fomularza
+przygotowane zapytania sql anty injection
+hash password bedzie mialo znaczenie jak bacvkend przesyla bewzp hasla
+mnijeszy odstep logo formularz
+mnijeszy padding top fomrularz
+pogoda po lewej w rogu maszynopisana czcionka
+TEACHER PŁATNY PRZY REJESTRACJI
