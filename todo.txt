@@ -1,5 +1,9 @@
-z app.js porobic komponenty login signup i google button
+
+--------GIT PUSH--------
+
+signup with google
 brak przerwy miedzy pojawianiem sie i znikaniem 
+usert type jako nauczyciel lub nie
 Dodanie useContext lub Redux do zarządzania stanem użytkownika, np. po udanym logowaniu, pozwoli w prosty sposób przekazać informacje o użytkowniku do różnych części aplikacji.
 klikam zaloguj sie potem zarejestruj sie i jako telefon pokazuje zaloguj sie
 credentialResponse do serwera z google opauth zeby logowac/signup
@@ -16,3 +20,24 @@ blokada scrollowania na stornie logowania
 wyusokosc strony na window high
 prompt przed odswiezeniem, zamknieceim
 blokada cofniecia strony przegladarki
+password hash w php na serwerze
+
+Rejestracja i walidacja danych
+
+Po rejestracji (czy to przez formularz, czy przez Google OAuth) powinno być potwierdzenie z bazy danych, że dane zostały pomyślnie przesłane i zwalidowane. To pozwala na przejście do kolejnych kroków.
+Po udanej rejestracji system powinien poinformować użytkownika, że dane zostały zapisane w bazie.
+Wybór typu użytkownika: nauczyciel czy uczeń
+
+Po pomyślnej rejestracji, użytkownik powinien mieć możliwość wyboru, czy jest nauczycielem, czy uczniem.
+Można to zrobić poprzez wybór (radio button lub rozwijane menu) i odpowiedni formularz pojawia się w zależności od wyboru.
+Jeśli użytkownik wybierze "uczeń", formularz wyboru umiejętności (z punktu 3) nie będzie wyświetlany.
+Dodawanie umiejętności (dla nauczyciela)
+
+Jeśli użytkownik wybierze "nauczyciel", po przejściu do formularza, powinien zobaczyć przycisk "Dodaj umiejętności".
+Po kliknięciu na ten przycisk, pojawi się rozwijana lista przedmiotów szkolnych, z których użytkownik może wybrać max 3 przedmioty, których chce nauczać.
+Wybrane przedmioty będą pojawiały się na formularzu jako "bańki" (tagi), które mogą być usuwane (klikając "X").
+Ważne: użytkownik może zaznaczyć maksymalnie 3 przedmioty.
+Zachowanie stylów CSS
+
+Formularze rejestracji, logowania, i formularze po rejestracji (np. wybór typu użytkownika, umiejętności) mają zachować ten sam styl CSS, który już jest wprowadzony dla formularzy logowania i rejestracji.
+Formularz powinien mieć również tę samą animację "flipped", czyli efekt obrotu przy przejściu pomiędzy formularzami.

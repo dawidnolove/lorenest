@@ -23,41 +23,91 @@ function Signup({ onSignup, handleFlip }) {
     };
 
     const handleSignup = async (event) => {
-        event.preventDefault();
+      event.preventDefault();
+  
+      if (!validateEmail(email)) {
+          alert("Niepoprawny email");
+          return;
+      }
+  
+      const hashedPassword = await bcrypt.hash(password, 10);
 
-        if (!validateEmail(email)) {
-            alert("Niepoprawny email");
-            return;
+      const userData = {
+        email: email,
+        password: hashedPassword,
+        phone_number: phoneNumber,
+      };
+      try {
+        const response = await fetch('http://localhost/backend/register.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userData),
+        });
+        const data = await response.json();
+        if (data.success) {
+          onSignup(data);
+        } else {
+          alert(data.message || 'Błąd rejestracji');
         }
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        onSignup({ email, hashedPassword, phoneNumber});
-    };
-
-    return (
-        <div className="signup-container">
-              <h2>Rejestracja</h2>
-              <form onSubmit={handleSignup}>
-                <input type="text" id="email" name="email" placeholder="E-MAIL" required />
-                <input type="password" id="password" name="password" placeholder="HASŁO" required />
-                <input type="tel" id="phone-number" name="phone-number" placeholder="TELEFON" required />
-                <input type="submit" value="Dalej" />
-              </form>
-              <div className="footer">
-                <p onClick={handleFlip}>Masz już konto? <a href="#" style={{ color: "#aaa" }}>Zaloguj się</a></p>
-              </div>
-              <span className="google-login">
-                <GoogleLogin
+      } catch (error) {
+        console.error('Błąd połączenia: ', error);
+        alert('Wystąpił błąd rejestracji');
+      }
+  
+      //onSignup({ email, hashedPassword, phoneNumber });
+  };
+  
+  return (
+      <div className="signup-container">
+          <h2>Rejestracja</h2>
+          <form onSubmit={handleSignup}>
+              <input 
+                  type="text" 
+                  id="email" 
+                  name="email" 
+                  placeholder="E-MAIL" 
+                  value={email} 
+                  onChange={(e) => setEmail(e.target.value)} 
+                  required 
+              />
+              <input 
+                  type="password" 
+                  id="password" 
+                  name="password" 
+                  placeholder="HASŁO" 
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)} 
+                  required 
+              />
+              <input 
+                  type="tel" 
+                  id="phone-number" 
+                  name="phone-number" 
+                  placeholder="TELEFON" 
+                  value={phoneNumber} 
+                  onChange={(e) => setPhoneNumber(e.target.value)} 
+                  required 
+              />
+              <input type="submit" value="Dalej" />
+          </form>
+          <div className="footer">
+              <p onClick={handleFlip}>Masz już konto? <a href="#" style={{ color: "#aaa" }}>Zaloguj się</a></p>
+          </div>
+          <span className="google-login">
+              <GoogleLogin
                   onSuccess={(credentialResponse) => {
-                    console.log(credentialResponse);
+                      console.log(credentialResponse);
                   }}
                   onError={() => {
-                    console.log("Login failed");
+                      console.log("Login failed");
                   }}
-                />
-              </span>
-        </div>
-    );
+              />
+          </span>
+      </div>
+  );
+  
 }
 
 export default Signup;
